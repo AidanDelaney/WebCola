@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <meta charset="utf-8">
 <style>
 @import url(../style.css);
@@ -77,15 +77,15 @@
         link.exit().remove();
 
         node = node.data(force.nodes(), function (d) { return d.id; });
-        node.enter().append("circle").attr("class", function (d) { return "node " + d.id; }).attr("r", 8);
+        node.enter().append("rect").attr("class", function (d) { return "node " + d.id; }).attr("width", 8).attr("height", 8);
         node.exit().remove();
 
         force.start();
     }
 
     function tick() {
-        node.attr("cx", function (d) { return d.x; })
-            .attr("cy", function (d) { return d.y; })
+        node.attr("x", function (d) { return d.x - d.width / 2; })
+            .attr("y", function (d) { return d.y - d.height / 2; })
 
         link.attr("x1", function (d) { return d.source.x; })
             .attr("y1", function (d) { return d.source.y; })
